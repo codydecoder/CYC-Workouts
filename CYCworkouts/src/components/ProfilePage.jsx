@@ -9,10 +9,6 @@ const ProfilePage = ({ userData }) => {
         <strong>Name:</strong>
         <span>{userData.name}</span>
       </div>
-      <div className="profile-info">
-        <strong>Workout Goal:</strong>
-        <span>{userData.goal}</span>
-      </div>
     </div>
   )
 }
