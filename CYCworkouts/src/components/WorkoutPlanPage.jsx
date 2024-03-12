@@ -6,11 +6,12 @@ const WorkoutPlan = ({ onCreatePlan }) => {
   const [workoutName, setWorkoutName] = useState('')
   const [exercises, setExercises] = useState([])
   const [selectedExercises, setSelectedExercises] = useState([])
+  const [selectedExerciseNames, setSelectedExerciseNames] = useState([])
 
   useEffect(() => {
     const fetchExercises = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/workoutPlans`)
+        const response = await axios.get(`${BASE_URL}/exercises`)
         const data = response.data
         setExercises(data)
       } catch (error) {
@@ -29,10 +30,18 @@ const WorkoutPlan = ({ onCreatePlan }) => {
       onCreatePlan({ name: workoutName, exercises: selectedExercises })
       setWorkoutName('')
       setSelectedExercises([])
+      setSelectedExerciseNames([])
     } catch (error) {
       console.error('Failed to create workout plan:', error)
     }
-  };
+  }
+
+  const handleExerciseSelect = (e) => {
+    const selectedIds = Array.from(e.target.selectedOptions, option => option.value)
+    setSelectedExercises(selectedIds)
+    const selectedNames = exercises.filter(exercise => selectedIds.includes(exercise._id)).map(exercise => exercise.exerciseName)
+    setSelectedExerciseNames(selectedNames)
+  }
 
   return (
     <div>
@@ -45,10 +54,25 @@ const WorkoutPlan = ({ onCreatePlan }) => {
           onChange={(e) => setWorkoutName(e.target.value)}
           required
         />
+        <label>Select Exercises:</label>
+        <select multiple value={selectedExercises} onChange={handleExerciseSelect}>
+          {exercises.map((exercise) => (
+            <option key={exercise._id} value={exercise._id}>{exercise.exerciseName}</option>
+          ))}
+        </select>
+        {selectedExerciseNames.length > 0 && (
+          <div>
+            <p>Selected Exercises:</p>
+            <ul>
+              {selectedExerciseNames.map((name, index) => (
+                <li key={index}>{name}</li>
+              ))}
+            </ul>
+          </div>
+        )}
         <button type="submit">Create Plan</button>
       </form>
     </div>
   )
 }
-
 export default WorkoutPlan
