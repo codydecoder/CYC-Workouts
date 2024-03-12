@@ -29,7 +29,7 @@ const App = () => {
         <Route path="/create-account" element={<CreateAccount onSubmit={() => {}} />} />
           <Route path="/profile" element={isAuthenticated ? <ProfilePage userData={user} /> : null} />
           <Route path="/create-exercise" element={isAuthenticated ? <ExerciseForm onExerciseSubmit={() => {}} /> : null} />
-          <Route path="/create-workout-plan" element={isAuthenticated ? <WorkoutPlanForm onCreatePlan={() => {}} /> : null} />
+          <Route path="/create-workoutPlan" element={isAuthenticated ? <WorkoutPlanForm onCreatePlan={() => {}} /> : null} />
           <Route path="/exercises" element={<ExerciseList/>}/>
           <Route path="/workoutPlans" element={<WorkoutPlanList/>}/>
         </Routes>

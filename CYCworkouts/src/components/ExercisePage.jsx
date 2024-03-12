@@ -4,13 +4,13 @@ import { BASE_URL } from '../global'
 
 const Exercise = ({ onExerciseSubmit }) => {
   const [exercise, setExercise] = useState({
-    name: '',
-    targetGroup: '',
+    exerciseName: '',
+    musclesTargeted: '',
     reps: '',
     sets: '',
     weight: '',
     instructions: '',
-    visual: '',
+    videoLink: '',
   })
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,9 +19,9 @@ const Exercise = ({ onExerciseSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post(`${BASE_URL}/exercises`)
+      await axios.post(`${BASE_URL}/exercises`, exercise)
       console.log('Exercise submitted successfully')
-      setExercise({ name: '', targetGroup: '', reps: '', sets: '', weight: '', instructions: '', visual: '' })
+      setExercise({ exerciseName: '', musclesTargeted: '', reps: '', sets: '', weight: '', instructions: '', videoLink: '' })
     } catch (error) {
       console.error('Failed to submit exercise:', error)
     }
@@ -32,7 +32,7 @@ const Exercise = ({ onExerciseSubmit }) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="name"
+          name="exerciseName"
           placeholder="Exercise Name"
           value={exercise.exerciseName}
           onChange={handleChange}
@@ -40,7 +40,7 @@ const Exercise = ({ onExerciseSubmit }) => {
         />
         <input
           type="text"
-          name="targetGroup"
+          name="musclesTargeted"
           placeholder="Target Muscle Group"
           value={exercise.musclesTargeted}
           onChange={handleChange}
@@ -79,8 +79,8 @@ const Exercise = ({ onExerciseSubmit }) => {
         />
         <input
           type="text"
-          name="visual"
-          placeholder="Visual URL"
+          name="videoLink"
+          placeholder="Video Link"
           value={exercise.videoLink}
           onChange={handleChange}
         />
