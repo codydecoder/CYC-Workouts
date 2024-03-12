@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios' // Add the axios import here
+import axios from 'axios'
 import { BASE_URL } from '../global'
 
 const WorkoutPlan = ({ onCreatePlan }) => {
@@ -75,4 +75,5 @@ const WorkoutPlan = ({ onCreatePlan }) => {
     </div>
   )
 }
+
 export default WorkoutPlan
