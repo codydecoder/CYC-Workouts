@@ -11,6 +11,7 @@ import ExerciseList from './components/lists/ExerciseList'
 import WorkoutPlanList from './components/lists/WorkoutPlanList'
 import './App.css'
 import { BASE_URL } from './global'
+import axios from 'axios'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -18,6 +19,7 @@ const App = () => {
   const handleLogin = async (username) => {
     try {
       const response = await axios.get(`${BASE_URL}/users/${username}`)
+      console.log(response)
       const userData = response.data
       setUser(userData)
     } catch (error) {
