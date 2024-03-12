@@ -10,41 +10,41 @@ const getAllUsers = async (req,res) => {
 }
 
 
-const getUserById = async (req, res) => {
+const getUserByUsername = async (req, res) => {
     try {
         const { id } = req.params;
         console.log(id);
-        const users = await User.findById(id);
+        const users = await User.findOne({ username: id })
         if (users) {
             return res.json(users);
         }
-        return res.status(404).send('User not found!');
+        return res.status(404).send('User not found!')
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send(error.message)
     }
 }
 
 const createUser = async (req, res) => {
     try {
-        const { username, password } = req.body; // Changed here to get the username from the request body
-        const user = new User({ username, password }); // Create a new user with the username
+        const { username, password } = req.body // Changed here to get the username from the request body
+        const user = new User({ username, password }) // Create a new user with the username
         await user.save();
-        return res.status(201).json({ user });
+        return res.status(201).json({ user })
     } catch (error) {
-        return res.status(500).json({ error: error.message });
+        return res.status(500).json({ error: error.message })
     }
 }
 
 const updateUser = async (req, res) => {
     try {
-        let { id } = req.params;
+        let { id } = req.params
         let users = await User.findByIdAndUpdate(id, req.body, { new: true })
         if (users) {
             return res.status(200).json(users)
         }
         throw new Error("User not found")
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send(error.message)
     }
 }
 
@@ -53,17 +53,17 @@ const deleteUser = async (req, res) => {
         const { id } = req.params;
         const deleted = await User.findByIdAndDelete(id)
         if (deleted) {
-            return res.status(200).send("User deleted");
+            return res.status(200).send("User deleted")
         }
-        throw new Error("User not found");
+        throw new Error("User not found")
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send(error.message)
     }
 }
 
 module.exports = {
     getAllUsers,
-    getUserById,
+    getUserByUsername,
     createUser,
     updateUser,
     deleteUser

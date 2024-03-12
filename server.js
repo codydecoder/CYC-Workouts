@@ -38,7 +38,7 @@ app.put('/workoutPlans/:id', workoutPlanController.updateWorkoutPlan)
 app.delete('/workoutPlans/:id', workoutPlanController.deleteWorkoutPlan)
 //user controllers
 app.get('/users', userController.getAllUsers)
-app.get('/users/:id', userController.getUserById)
+app.get('/users/:id', userController.getUserByUsername)
 app.post('/users', userController.createUser)
 app.put('/users/:id', userController.updateUser)
 app.delete('/users/:id', userController.deleteUser)
