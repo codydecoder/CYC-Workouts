@@ -26,8 +26,8 @@ const getUserById = async (req, res) => {
 
 const createUser = async (req, res) => {
     try {
-        const { username } = req.body; // Changed here to get the username from the request body
-        const user = new User({ username }); // Create a new user with the username
+        const { username, password } = req.body; // Changed here to get the username from the request body
+        const user = new User({ username, password }); // Create a new user with the username
         await user.save();
         return res.status(201).json({ user });
     } catch (error) {

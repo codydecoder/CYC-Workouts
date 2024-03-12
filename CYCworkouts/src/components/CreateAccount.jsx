@@ -5,6 +5,7 @@ import { BASE_URL } from '../global'
 
 const CreateAccount = ({ onSubmit }) => {
   const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
   const handleSubmit = async (event) => {
@@ -26,6 +27,13 @@ const CreateAccount = ({ onSubmit }) => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
         <button type="submit">Create Account</button>
