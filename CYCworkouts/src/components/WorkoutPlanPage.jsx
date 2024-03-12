@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios' // Add the axios import here
 import { BASE_URL } from '../global'
 
 const WorkoutPlan = ({ onCreatePlan }) => {
@@ -9,41 +10,29 @@ const WorkoutPlan = ({ onCreatePlan }) => {
   useEffect(() => {
     const fetchExercises = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/workoutPlans`)//put actual url
+        const response = await axios.get(`${BASE_URL}/workoutPlans`)
         const data = response.data
         setExercises(data)
       } catch (error) {
         console.error("Failed to fetch exercises:", error)
       }
-    }
+    };
 
     fetchExercises()
   }, [])
 
-  const handleExerciseSelection = (e) => {
-    const selected = Array.from(e.target.selectedOptions, option => option.value)
-    setSelectedExercises(selected)
-  }
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   onCreatePlan({ name: workoutName, exercises: selectedExercises })
-  //   setWorkoutName('')
-  //   setSelectedExercises([])
-  // }
-
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const response = await axios.post(`${BASE_URL}/workoutPlans`, { workoutPlanName: workoutName, exerciseList: selectedExercises, description: 'Workout Description' });
-      console.log('Workout plan created successfully:', response.data);
-      onCreatePlan({ name: workoutName, exercises: selectedExercises });
-      setWorkoutName('');
-      setSelectedExercises([]);
+      const response = await axios.post(`${BASE_URL}/workoutPlans`, { workoutPlanName: workoutName, exerciseList: selectedExercises, description: 'Workout Description' })
+      console.log('Workout plan created successfully:', response.data)
+      onCreatePlan({ name: workoutName, exercises: selectedExercises })
+      setWorkoutName('')
+      setSelectedExercises([])
     } catch (error) {
-      console.error('Failed to create workout plan:', error);
+      console.error('Failed to create workout plan:', error)
     }
-  }
+  };
 
   return (
     <div>
@@ -56,7 +45,6 @@ const WorkoutPlan = ({ onCreatePlan }) => {
           onChange={(e) => setWorkoutName(e.target.value)}
           required
         />
-        
         <button type="submit">Create Plan</button>
       </form>
     </div>
