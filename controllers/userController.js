@@ -26,12 +26,12 @@ const getUserById = async (req, res) => {
 
 const createUser = async (req, res) => {
     try {
-        const users = await new User(req.body);
-        await users.save();
-        return res.status(201).json({users,});
-
+        const { username } = req.body; // Changed here to get the username from the request body
+        const user = new User({ username }); // Create a new user with the username
+        await user.save();
+        return res.status(201).json({ user });
     } catch (error) {
-        return res.status(500).json({ error: error.message});
+        return res.status(500).json({ error: error.message });
     }
 }
 

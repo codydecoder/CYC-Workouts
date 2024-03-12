@@ -7,8 +7,12 @@ const CreateAccount = ({ onSubmit }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await onSubmit({ username })
-    navigate('/login') // back to the login page after account creation
+    try {
+      await axios.post(`${BASE_URL}/users`, { username })
+      navigate('/login') // Navigate back to the login page after account creation
+    } catch (error) {
+      console.error('Error creating account:', error.message)
+    }
   }
 
   return (
