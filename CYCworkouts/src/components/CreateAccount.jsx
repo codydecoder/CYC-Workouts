@@ -11,7 +11,7 @@ const CreateAccount = ({ onSubmit }) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.post(`${BASE_URL}/users`, { username })
+      await axios.post(`${BASE_URL}/users`, { username, password })
       navigate('/login') // Navigate back to the login page after account creation
     } catch (error) {
       console.error('Error creating account:', error.message)
@@ -30,7 +30,7 @@ const CreateAccount = ({ onSubmit }) => {
           required
         />
         <input
-          type="text"
+          type="Password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
