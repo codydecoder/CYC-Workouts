@@ -1,4 +1,5 @@
-const { User } = require('../models');
+const { User, Exercise, WorkoutPlan } = require('../models')
+
 
 const getAllUsers = async (req,res) => {
     try {
