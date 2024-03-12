@@ -36,7 +36,7 @@ export default function SearchExercises(){
                         <h3 className="exercise-name">Name: <span className='exercise-name-details'>{exercise.exerciseName}</span></h3>
                         <h4 className="exercise-reps">Reps: <span className='exercise-reps-details'>{exercise.reps}</span></h4>
                         <h4 className="exercise-sets">Sets: <span className='exercise-sets-details'>{exercise.sets}</span></h4>
-                        <h4 className="exercise-weight">Reps: <span className='exercise-weight-details'>{exercise.weight}</span></h4>
+                        <h4 className="exercise-weight">Weight: <span className='exercise-weight-details'>{exercise.weight}</span></h4>
                         <h4 className="exercise-video" >Video Link: <span className="exercise-videoLink-details">{exercise.videoLink}</span></h4>
                     </div>
                 ))

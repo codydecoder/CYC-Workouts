@@ -1,27 +1,31 @@
 import React, { useState } from 'react'
+import axios from 'axios'
+import { BASE_URL } from '../global'
 
 const Exercise = ({ onExerciseSubmit }) => {
   const [exercise, setExercise] = useState({
     name: '',
     targetGroup: '',
     reps: '',
+    sets: '',
     weight: '',
     instructions: '',
     visual: '',
   })
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setExercise(prev => ({ ...prev, [name]: value }))
   }
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    onExerciseSubmit(exercise)
-    // Reset the form after submission
-    setExercise({ name: '', targetGroup: '', reps: '', weight: '', instructions: '', visual: '' })
+    try {
+      await axios.post(`${BASE_URL}/exercises`)
+      console.log('Exercise submitted successfully')
+      setExercise({ name: '', targetGroup: '', reps: '', sets: '', weight: '', instructions: '', visual: '' })
+    } catch (error) {
+      console.error('Failed to submit exercise:', error)
+    }
   }
-
   return (
     <div>
       <h2>Create New Exercise</h2>
@@ -30,7 +34,7 @@ const Exercise = ({ onExerciseSubmit }) => {
           type="text"
           name="name"
           placeholder="Exercise Name"
-          value={exercise.name}
+          value={exercise.exerciseName}
           onChange={handleChange}
           required
         />
@@ -38,7 +42,7 @@ const Exercise = ({ onExerciseSubmit }) => {
           type="text"
           name="targetGroup"
           placeholder="Target Muscle Group"
-          value={exercise.targetGroup}
+          value={exercise.musclesTargeted}
           onChange={handleChange}
           required
         />
@@ -47,6 +51,14 @@ const Exercise = ({ onExerciseSubmit }) => {
           name="reps"
           placeholder="Reps"
           value={exercise.reps}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="number"
+          name="sets"
+          placeholder="Sets"
+          value={exercise.sets}
           onChange={handleChange}
           required
         />
@@ -66,10 +78,10 @@ const Exercise = ({ onExerciseSubmit }) => {
           required
         />
         <input
-          type="url"
+          type="text"
           name="visual"
           placeholder="Visual URL"
-          value={exercise.visual}
+          value={exercise.videoLink}
           onChange={handleChange}
         />
         <button type="submit">Submit Exercise</button>
@@ -77,5 +89,4 @@ const Exercise = ({ onExerciseSubmit }) => {
     </div>
   )
 }
-
 export default Exercise

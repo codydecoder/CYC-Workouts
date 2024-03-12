@@ -8,6 +8,7 @@ import Homepage from './components/HomePage'
 import ExerciseForm from './components/ExercisePage'
 import WorkoutPlanForm from './components/WorkoutPlanPage'
 import ExerciseList from './components/lists/ExerciseList'
+import WorkoutPlanList from './components/lists/WorkoutPlanList'
 import './App.css'
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/create-exercise" element={isAuthenticated ? <ExerciseForm onExerciseSubmit={() => {}} /> : null} />
           <Route path="/create-workout-plan" element={isAuthenticated ? <WorkoutPlanForm onCreatePlan={() => {}} /> : null} />
           <Route path="/exercises" element={<ExerciseList/>}/>
+          <Route path="/workoutPlans" element={<WorkoutPlanList/>}/>
         </Routes>
     </Router>
   )

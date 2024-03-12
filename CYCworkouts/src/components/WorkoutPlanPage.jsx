@@ -5,19 +5,19 @@ const WorkoutPlan = ({ onCreatePlan }) => {
   const [exercises, setExercises] = useState([])
   const [selectedExercises, setSelectedExercises] = useState([])
 
-  useEffect(() => {
-    const fetchExercises = async () => {
-      try {
-        const response = await fetch()//put actual url
-        const data = await response.json()
-        setExercises(data)
-      } catch (error) {
-        console.error("Failed to fetch exercises:", error)
-      }
-    }
+  // useEffect(() => {
+  //   const fetchExercises = async () => {
+  //     try {
+  //       const response = await fetch()//put actual url
+  //       const data = await response.json()
+  //       setExercises(data)
+  //     } catch (error) {
+  //       console.error("Failed to fetch exercises:", error)
+  //     }
+  //   }
 
-    fetchExercises()
-  }, [])
+  //   fetchExercises()
+  // }, [])
 
   const handleExerciseSelection = (e) => {
     const selected = Array.from(e.target.selectedOptions, option => option.value)
@@ -42,11 +42,7 @@ const WorkoutPlan = ({ onCreatePlan }) => {
           onChange={(e) => setWorkoutName(e.target.value)}
           required
         />
-        <select multiple={true} value={selectedExercises} onChange={handleExerciseSelection} required>
-          {exercises.map((exercise, index) => (
-            <option key={index} value={exercise.id}>{exercise.name}</option>
-          ))}
-        </select>
+        
         <button type="submit">Create Plan</button>
       </form>
     </div>
