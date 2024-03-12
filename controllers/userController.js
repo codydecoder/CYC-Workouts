@@ -14,11 +14,31 @@ const getUserByUsername = async (req, res) => {
     try {
         const { id } = req.params;
         console.log(id);
-        const users = await User.findOne({ username: id })
-        if (users) {
-            return res.json(users);
+        const user = await User.findOne({ username: id })
+        if (user) {
+            return res.json(user);
         }
         return res.status(404).send('User not found!')
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
+const getExercisesByUserId = async (req, res) => {
+    try {
+        const { id } = req.params
+        const exercises = await Exercise.find({ user: id })
+        res.json(exercises)
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
+const getWorkoutPlansByUserId = async (req, res) => {
+    try {
+        const { id } = req.params
+        const workoutPlans = await WorkoutPlan.find({ user: id })
+        res.json(workoutPlans)
     } catch (error) {
         return res.status(500).send(error.message)
     }
@@ -66,5 +86,8 @@ module.exports = {
     getUserByUsername,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+
+    getExercisesByUserId,
+    getWorkoutPlansByUserId
 }

@@ -9,12 +9,12 @@ const ProfilePage = ({ userData }) => {
 
   useEffect(() => {
     const fetchWorkoutPlans = async () => {
-      const response = await axios.get(`${BASE_URL}/workoutPlans/${userData._id}`)
+      const response = await axios.get(`${BASE_URL}/users/${userData._id}/workoutPlans`)
       setWorkoutPlans(response.data)
     }
 
     const fetchExercises = async () => {
-      const response = await axios.get(`${BASE_URL}/exercises/${userData._id}`)
+      const response = await axios.get(`${BASE_URL}/users/${userData._id}/exercises`)
       setExercises(response.data)
     }
 
