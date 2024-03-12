@@ -11,6 +11,11 @@ const LoginPage = ({ onLogin }) => {
     navigate('/') // Navigate to the homepage after login
   }
 
+  const handleLogout = () => {
+    onLogout()
+    navigate('/login') // Navigate back to the login page after logout
+  }
+
   return (
     <div className="login-container">
       <h2>Login Page</h2>
@@ -24,6 +29,7 @@ const LoginPage = ({ onLogin }) => {
         />
         <button type="submit">Login Now</button>
       </form>
+      <button onClick={handleLogout}>Logout</button>
       <button onClick={() => navigate('/create-account')}>Create Account</button>
     </div>
   )

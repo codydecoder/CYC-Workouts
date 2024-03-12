@@ -10,12 +10,23 @@ import WorkoutPlanForm from './components/WorkoutPlanPage'
 import ExerciseList from './components/lists/ExerciseList'
 import WorkoutPlanList from './components/lists/WorkoutPlanList'
 import './App.css'
+import { BASE_URL } from './global'
 
 const App = () => {
   const [user, setUser] = useState(null)
 
-  const handleLogin = (username) => {
-    setUser({ name: username })
+  const handleLogin = async (username) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/users/${username}`)
+      const userData = response.data
+      setUser(userData)
+    } catch (error) {
+      console.error('Error fetching user data:', error.message)
+    }
+  }
+
+  const handleLogout = () => {
+    setUser(null)
   }
 
   const isAuthenticated = !!user
@@ -24,7 +35,7 @@ const App = () => {
     <Router>
       <Header /> 
       <Routes>
-      <Route path="/" element={isAuthenticated ? <Homepage user={user} /> : <Navigate replace to="/login" />} />
+      <Route path="/" element={isAuthenticated ? <Homepage user={user} onLogout={handleLogout} /> : <Navigate replace to="/login" />} />
         <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
         <Route path="/create-account" element={<CreateAccount onSubmit={() => {}} />} />
           <Route path="/profile" element={isAuthenticated ? <ProfilePage userData={user} /> : null} />

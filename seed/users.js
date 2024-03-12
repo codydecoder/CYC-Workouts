@@ -5,9 +5,6 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const main = async () => {
   
-  //const cannedTunaFishSalad = await Recipe.find({recipeName: 'Canned Tuna Fish Salad'})
-  //const coffee = await Food.find({foodName: 'Coffee'})
-
   //workout plans
   const kneePt = await WorkoutPlan.find({workoutPlanName: 'Knee PT'})
   const armDay = await WorkoutPlan.find({workoutPlanName: 'Arm Day'})
