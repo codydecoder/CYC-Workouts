@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../global'
@@ -43,6 +44,12 @@ const WorkoutPlan = ({ onCreatePlan }) => {
     setSelectedExerciseNames(selectedNames)
   }
 
+  const addToWorkoutPlan = (exerciseId) => {
+    setSelectedExercises([...selectedExercises, exerciseId])
+    const selectedName = exercises.find(exercise => exercise._id === exerciseId).exerciseName
+    setSelectedExerciseNames([...selectedExerciseNames, selectedName])
+  }
+
   return (
     <div>
       <h2>Create Workout Plan</h2>
@@ -72,6 +79,18 @@ const WorkoutPlan = ({ onCreatePlan }) => {
         )}
         <button type="submit">Create Plan</button>
       </form>
+      
+      <div>
+        <h3>Exercise List</h3>
+        <ul>
+          {exercises.map((exercise) => (
+            <li key={exercise._id}>
+            {exercise.exerciseName}
+            <button onClick={() => addToWorkoutPlan(exercise._id)}>Add to workout plan</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }
