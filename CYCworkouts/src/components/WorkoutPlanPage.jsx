@@ -1,34 +1,48 @@
 import React, { useState, useEffect } from 'react'
+import { BASE_URL } from '../global'
 
 const WorkoutPlan = ({ onCreatePlan }) => {
   const [workoutName, setWorkoutName] = useState('')
   const [exercises, setExercises] = useState([])
   const [selectedExercises, setSelectedExercises] = useState([])
 
-  // useEffect(() => {
-  //   const fetchExercises = async () => {
-  //     try {
-  //       const response = await fetch()//put actual url
-  //       const data = await response.json()
-  //       setExercises(data)
-  //     } catch (error) {
-  //       console.error("Failed to fetch exercises:", error)
-  //     }
-  //   }
+  useEffect(() => {
+    const fetchExercises = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/workoutPlans`)//put actual url
+        const data = response.data
+        setExercises(data)
+      } catch (error) {
+        console.error("Failed to fetch exercises:", error)
+      }
+    }
 
-  //   fetchExercises()
-  // }, [])
+    fetchExercises()
+  }, [])
 
   const handleExerciseSelection = (e) => {
     const selected = Array.from(e.target.selectedOptions, option => option.value)
     setSelectedExercises(selected)
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    onCreatePlan({ name: workoutName, exercises: selectedExercises })
-    setWorkoutName('')
-    setSelectedExercises([])
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   onCreatePlan({ name: workoutName, exercises: selectedExercises })
+  //   setWorkoutName('')
+  //   setSelectedExercises([])
+  // }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${BASE_URL}/workoutPlans`, { workoutPlanName: workoutName, exerciseList: selectedExercises, description: 'Workout Description' });
+      console.log('Workout plan created successfully:', response.data);
+      onCreatePlan({ name: workoutName, exercises: selectedExercises });
+      setWorkoutName('');
+      setSelectedExercises([]);
+    } catch (error) {
+      console.error('Failed to create workout plan:', error);
+    }
   }
 
   return (

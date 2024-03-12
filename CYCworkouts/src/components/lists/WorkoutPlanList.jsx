@@ -3,7 +3,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { BASE_URL } from '../../global'
 
-export default function SearchWorkoutPlans(){
+/*export default function SearchWorkoutPlans(){
 
     const [workoutPlans, setWorkoutPlans] = useState([])
 
@@ -17,7 +17,24 @@ export default function SearchWorkoutPlans(){
         getWorkoutPlans()
     }, [])
 
-    let navigate = useNavigate()
+    let navigate = useNavigate()*/
+
+    export default function WorkoutPlanList() {
+        const [workoutPlans, setWorkoutPlans] = useState([]);
+        
+        useEffect(() => {
+          const getWorkoutPlans = async () => {
+            try {
+              const response = await axios.get(`${BASE_URL}/workoutPlans`);
+              setWorkoutPlans(response.data);
+            } catch (error) {
+              console.error("Failed to fetch workout plans:", error);
+            }
+          };
+          getWorkoutPlans();
+        }, []);
+        
+        let navigate = useNavigate();
 
     const showWorkoutPlan = (key) => {
         navigate(`${key}`)
