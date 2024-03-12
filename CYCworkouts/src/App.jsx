@@ -7,6 +7,7 @@ import ProfilePage from './components/ProfilePage'
 import Homepage from './components/HomePage'
 import ExerciseForm from './components/ExercisePage'
 import WorkoutPlanForm from './components/WorkoutPlanPage'
+import ExerciseList from './components/lists/ExerciseList'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/profile" element={isAuthenticated ? <ProfilePage userData={user} /> : null} />
           <Route path="/create-exercise" element={isAuthenticated ? <ExerciseForm onExerciseSubmit={() => {}} /> : null} />
           <Route path="/create-workout-plan" element={isAuthenticated ? <WorkoutPlanForm onCreatePlan={() => {}} /> : null} />
+          <Route path="/exercises" element={<ExerciseList/>}/>
         </Routes>
     </Router>
   )
