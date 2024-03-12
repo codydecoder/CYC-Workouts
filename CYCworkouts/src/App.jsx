@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
+import Header from './components/Header'
 import LoginPage from './components/LoginPages'
 import CreateAccount from './components/CreateAccount'
 import ProfilePage from './components/ProfilePage'
@@ -18,6 +19,7 @@ const App = () => {
 
   return (
     <Router>
+      <Header /> 
       <Routes>
       <Route path="/" element={isAuthenticated ? <Homepage user={user} /> : <Navigate replace to="/login" />} />
         <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
