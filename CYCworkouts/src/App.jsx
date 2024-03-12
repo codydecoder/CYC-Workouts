@@ -8,6 +8,7 @@ import Homepage from './components/HomePage'
 import ExerciseForm from './components/ExercisePage'
 import WorkoutPlanForm from './components/WorkoutPlanPage'
 import ExerciseList from './components/lists/ExerciseList'
+import './App.css'
 
 const App = () => {
   const [user, setUser] = useState(null)
