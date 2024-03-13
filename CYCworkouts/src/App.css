@@ -14,3 +14,71 @@
   border: 2px solid black;
   
 }
+
+/* HomePage.jsx ||May need to add ID/classNames|| */
+  .homepage-container {}
+  .user-info {}
+
+/* HomePage.jsx */
+
+
+/* LoginPage.jsx ||May need to add ID/classNames|| */
+  .login-container {}
+
+/* LoginPage.jsx */
+
+
+/* ProfilePage.jsx ||May have duplicates with ExerciseList.jsx|| */
+  .workoutPlan-list {} 
+  .workoutPlan-card {}
+  .workoutPlan-name {}
+  .workoutPlan-name-details {}
+  .workoutPlan-exerciseList {}
+  .workoutPlan-description {}
+  .workoutPlan-description-details {}
+
+/* ProfilePage.jsx */
+
+
+/* CreateAccount.jsx ||NEED TO ADD ID/classNames|| */
+
+/* CreateAccount.jsx */
+
+
+/* ExercisePage.jsx ||NEED TO ADD ID/classNames|| */
+
+/* ExercisePage.jsx */
+
+
+/* WorkoutPlanPage.jsx ||NEED TO ADD ID/classNames|| */
+
+/* WorkoutPlanPage.jsx */
+
+
+/* ExerciseList.jsx ||May have duplicates with ProfilePage.jsx|| */
+  .exercise-list {}
+  .exercise-card {}
+  .exercise-name {}
+  .exercise-name-details {}
+  .exercise-reps {}
+  .exercise-reps-details {}
+  .exercise-sets {}
+  .exercise-sets-details {}
+  .exercise-weight {}
+  .exercise-weight-details {}
+  .exercise-videoLink {}
+  .exercise-videoLink-details {}
+
+/* ExerciseList.jsx */
+
+
+/* WorkoutPlanList.jsx */
+  .workoutPlan-list {}
+  .workoutPlan-card {}
+  .workoutPlan-name {}
+  .workoutPlan-name-details {}
+  .workoutPlan-exerciseList {}
+  .workoutPlan-description {}
+  .workoutPlan-description-details {}
+  
+/* WorkoutPlanList.jsx */

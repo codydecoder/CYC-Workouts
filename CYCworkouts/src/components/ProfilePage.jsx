@@ -7,7 +7,7 @@ const ProfilePage = ({ userData }) => {
   const [workoutPlans, setWorkoutPlans] = useState([])
   const [exercises, setExercises] = useState([])
 
-  useEffect(() => {
+  /*useEffect(() => {
     const fetchWorkoutPlans = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/users/${userData._id}/workoutPlans`)
@@ -28,12 +28,12 @@ const ProfilePage = ({ userData }) => {
 
     fetchWorkoutPlans()
     fetchExercises()
-  }, [userData._id])
+  }, [userData._id])*/
 
-  /*useEffect(() => {
+  useEffect(() => {
     setWorkoutPlans(userData.savedWorkoutPlans)
     setExercises(userData.savedExercises)
-  }, [userData])*/
+  }, [userData])
 
   console.log(userData)
   console.log(workoutPlans)
