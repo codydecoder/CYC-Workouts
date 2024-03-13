@@ -22,12 +22,15 @@ const ProfilePage = ({ userData }) => {
     fetchExercises()
   }, [userData._id])
 
+  console.log(userData)
+  console.log(workoutPlans)
+  console.log(exercises)
   return (
     <div className="profile-container">
       <h2>Profile</h2>
       <div className="profile-info">
         <strong>Name:</strong>
-        <span>{userData.name}</span>
+        <span> {userData.username} </span>
       </div>
 
       <div className="workout-plans">
