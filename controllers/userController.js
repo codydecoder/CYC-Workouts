@@ -17,8 +17,8 @@ const getUserByUsername = async (req, res) => {
         console.log(id);
         const user = await User.findOne({ username: id })
 
-             .populate('savedWorkoutPlans')
-             .populate('savedExercises')
+            //  .populate('savedWorkoutPlans')
+            //  .populate('savedExercises')
 
         if (user) {
             return res.json(user);
@@ -32,7 +32,8 @@ const getUserByUsername = async (req, res) => {
 const getExercisesByUserId = async (req, res) => {
     try {
         const { id } = req.params
-        const exercises = await Exercise.find({ user: id })
+        const user = await User.findById(id).populate('savedExercises')
+        const exercises = user.savedExercises
         res.json(exercises)
     } catch (error) {
         return res.status(500).send(error.message)
@@ -42,7 +43,8 @@ const getExercisesByUserId = async (req, res) => {
 const getWorkoutPlansByUserId = async (req, res) => {
     try {
         const { id } = req.params
-        const workoutPlans = await WorkoutPlan.find({ user: id })
+        const user = await User.findById(id).populate('savedWorkoutPlans')
+        const workoutPlans = user.savedWorkoutPlans
         res.json(workoutPlans)
     } catch (error) {
         return res.status(500).send(error.message)
