@@ -16,6 +16,10 @@ const getUserByUsername = async (req, res) => {
         const { id } = req.params;
         console.log(id);
         const user = await User.findOne({ username: id })
+
+             .populate('savedWorkoutPlans')
+             .populate('savedExercises')
+
         if (user) {
             return res.json(user);
         }

@@ -7,20 +7,33 @@ const ProfilePage = ({ userData }) => {
   const [workoutPlans, setWorkoutPlans] = useState([])
   const [exercises, setExercises] = useState([])
 
-  useEffect(() => {
+  /*useEffect(() => {
     const fetchWorkoutPlans = async () => {
-      const response = await axios.get(`${BASE_URL}/users/${userData._id}/workoutPlans`)
-      setWorkoutPlans(response.data)
+      try {
+        const response = await axios.get(`${BASE_URL}/users/${userData._id}/workoutPlans`)
+        setWorkoutPlans(response.data)
+      } catch (error) {
+        console.error('Error fetching workout plans:', error.message)
+      }
     }
 
     const fetchExercises = async () => {
-      const response = await axios.get(`${BASE_URL}/users/${userData._id}/exercises`)
-      setExercises(response.data)
+      try {
+        const response = await axios.get(`${BASE_URL}/users/${userData._id}/exercises`)
+        setExercises(response.data)
+      } catch (error) {
+        console.error('Error fetching exercises:', error.message)
+      }
     }
 
     fetchWorkoutPlans()
     fetchExercises()
-  }, [userData._id])
+  }, [userData._id])*/
+
+  useEffect(() => {
+    setWorkoutPlans(userData.savedWorkoutPlans)
+    setExercises(userData.savedExercises)
+  }, [userData])
 
   console.log(userData)
   console.log(workoutPlans)
@@ -37,7 +50,7 @@ const ProfilePage = ({ userData }) => {
         <h3>Saved Workout Plans:</h3>
         <ul>
           {workoutPlans.map(plan => (
-            <li key={plan._id}>{plan.name}</li>
+            <li key={plan._id}>{plan.workoutPlanName}</li>
           ))}
         </ul>
       </div>
@@ -46,7 +59,7 @@ const ProfilePage = ({ userData }) => {
         <h3>Saved Exercises:</h3>
         <ul>
           {exercises.map(exercise => (
-            <li key={exercise._id}>{exercise.name}</li>
+            <li key={exercise._id}>{exercise.exerciseName}</li>
           ))}
         </ul>
       </div>
