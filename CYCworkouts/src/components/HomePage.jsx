@@ -17,7 +17,7 @@ const Homepage = ({ user }) => {
             <p>Name: {user.username}</p>
           </div>
           <button onClick={() => navigate('/create-exercise')}>Create Exercises</button>
-          <button onClick={() => navigate('/create-workout-plan')}>Create Workout Plan</button>
+          <button onClick={() => navigate('/create-workoutPlan')}>Create Workout Plan</button>
         </>
       )}
     </div>

@@ -52,9 +52,50 @@
 /* Header.jsx */
 
 /* HomePage.jsx ||May need to add ID/classNames|| */
-  .homepage-container {}
-  .user-info {}
-
+.homepage-container {
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.homepage-container .user-info {
+  background-color: #C5BFBF;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 30%;
+}
+.homepage-container .user-info:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color:aquamarine;
+}
+.homepage-container .user-info h2,
+.homepage-container .user-info p {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 22px;
+  margin: 5px;
+}
+.homepage-container button {
+  background-color: #4676BF;
+  color: #FFFFFF;
+  font-size: 18px;
+  margin: 5px 0;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.homepage-container button:hover {
+  background-color: #365A96;
+}
 /* HomePage.jsx */
 
 
@@ -142,15 +183,88 @@
 
 /* ExercisePage.jsx */
 
+/* Exercise & WorkoutPlan Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: lightgray;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 100%;
+  max-width: 291px;
+}
+form input[type="text"],
+form input[type="number"],
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+form textarea {
+  height: 100px;
+  resize: vertical;
+}
+form button[type="submit"] {
+  background-color: #4676BF;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+form button[type="submit"]:hover {
+  background-color: #365A96;
+}
+/* Exercise & WorkoutPlan Forms */
 
 /* WorkoutPlanPage.jsx ||NEED TO ADD ID/classNames|| */
+.workoutPlanPage-title {
+  font-family: "Montagu Slab", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 36px;
+  font-weight: 500;
+  text-shadow: 0 0 5px gray;
+  margin-bottom: 10px;
+  color: #4676BF;
+}
+#workoutPlan-name-input {}  
+#chooseExercises-label {
+  
+}
+#workoutPlan-exercisesList {
+  border: 2px solid black;
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+.workoutPlan-exerciseCard {
+  display: flex;
+  
+  width: 100%;
+  margin: 0;
+  padding: 5px;
+  text-align: left;
+  justify-content: space-between;
+}
+.workoutPlan-addExercise-button {
+  margin: 0;  
+  padding: 4px;
 
+}
+#createWorkoutPlan-button {}
+  
 /* WorkoutPlanPage.jsx */
 
 
 /* ExerciseList.jsx ||May have duplicates with ProfilePage.jsx|| */
-  .exercise-list {}
-  .exercise-card {}
   .exercise-name {}
   .exercise-name-details {}
   .exercise-reps {}
@@ -161,6 +275,49 @@
   .exercise-weight-details {}
   .exercise-videoLink {}
   .exercise-videoLink-details {}
+
+  .exercise-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+  }
+  .exercise-card {
+    background-color: #D9D9D9;
+    border-radius: 8px;
+    border-color: #365A96;
+    outline: 3px solid #BDC9DD;
+    border-width: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 337px;
+  }
+  .exercise-card h3, .exercise-card h4 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 5px 0;
+    text-align: left;
+  }
+  .exercise-card span {
+    font-weight: 400;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #4676BF;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Roboto-Medium", Helvetica;
+    margin-top: 20px;
+  }
+  button:hover {
+    background-color: #365A96;
+  }
 
 /* ExerciseList.jsx */
 

@@ -23,6 +23,15 @@ export default function SearchExercises(){
         navigate(`${key}`)
     }
 
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`${BASE_URL}/exercises/${id}`)
+            setExercises(exercises.filter(exercise => exercise._id !== id))
+        } catch (error) {
+            console.error('Error deleting exercise:', error)
+        }
+    }
+
     if(!exercises) {
         return <h1>LOADING...</h1>
 
@@ -38,6 +47,7 @@ export default function SearchExercises(){
                         <h4 className="exercise-sets">Sets: <span className='exercise-sets-details'>{exercise.sets}</span></h4>
                         <h4 className="exercise-weight">Weight: <span className='exercise-weight-details'>{exercise.weight}</span></h4>
                         <h4 className="exercise-video" >Video Link: <span className="exercise-videoLink-details">{exercise.videoLink}</span></h4>
+                        <button className='exercise-delete-button' onClick={() => handleDelete(exercise._id)}>Delete</button>
                     </div>
                 ))
             }

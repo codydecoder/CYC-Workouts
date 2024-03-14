@@ -52,21 +52,25 @@ const WorkoutPlan = ({ onCreatePlan }) => {
 
   return (
     <div>
-      <h2>Create Workout Plan</h2>
+      <div className='workoutPlanPage-title'>Create Workout Plan</div>
       <form onSubmit={handleSubmit}>
         <input
+          id='workoutPlan-name-input'
           type="text"
           placeholder="Workout Name"
           value={workoutName}
           onChange={(e) => setWorkoutName(e.target.value)}
           required
         />
-        <label>Select Exercises:</label>
-        <select multiple value={selectedExercises} onChange={handleExerciseSelect}>
+        <label id='chooseExercises-label'>Choose Exercises:</label>
+        <div id='workoutPlan-exercisesList'>
           {exercises.map((exercise) => (
-            <option key={exercise._id} value={exercise._id}>{exercise.exerciseName}</option>
+            <li className='workoutPlan-exerciseCard' key={exercise._id}>
+            {exercise.exerciseName}
+            <button className='workoutPlan-addExercise-button' onClick={() => addToWorkoutPlan(exercise._id)}>Add Exercise</button>
+            </li>
           ))}
-        </select>
+        </div>
         {selectedExerciseNames.length > 0 && (
           <div>
             <p>Selected Exercises:</p>
@@ -77,20 +81,8 @@ const WorkoutPlan = ({ onCreatePlan }) => {
             </ul>
           </div>
         )}
-        <button type="submit">Create Plan</button>
+        <button id='createWorkoutPlan-button'type="submit">Create Plan</button>
       </form>
-      
-      <div>
-        <h3>Exercise List</h3>
-        <ul>
-          {exercises.map((exercise) => (
-            <li key={exercise._id}>
-            {exercise.exerciseName}
-            <button onClick={() => addToWorkoutPlan(exercise._id)}>Add to workout plan</button>
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   )
 }
