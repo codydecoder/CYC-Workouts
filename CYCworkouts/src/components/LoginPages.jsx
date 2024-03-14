@@ -20,9 +20,10 @@ const LoginPage = ({ onLogin }) => {
 
   return (
     <div className="login-container">
-      <h2>Login Page</h2>
-      <form onSubmit={handleSubmit}>
+      <div id='login-title'>Login Page</div>
+      <form id='login-form' onSubmit={handleSubmit}>
         <input
+          id='username-input'
           type="text"
           placeholder="Username"
           value={username}
@@ -30,16 +31,17 @@ const LoginPage = ({ onLogin }) => {
           required
         />
         <input
+          id='password-input'
           type="password" 
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login Now</button>
+        <button id='login-button' type="submit">Login Now</button>
       </form>
-      <button onClick={handleLogout}>Logout</button>
-      <button onClick={() => navigate('/create-account')}>Create Account</button>
+      <button id='logout-button' onClick={handleLogout}>Logout</button>
+      <button id='createAccount-button' onClick={() => navigate('/create-account')}>Create Account</button>
     </div>
   )
 }
