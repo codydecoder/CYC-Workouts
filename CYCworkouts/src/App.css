@@ -147,7 +147,7 @@
   #login-button {
     width: 20%;
     border: 2px solid black;
-    background-color: lightgray;
+    background-color: #4676BF;
     margin: 2px;
     padding: 3px;
   }
@@ -158,6 +158,7 @@
     margin-top: 10px;
     border: 2px solid black;
     background-color: lightgray;
+    color: black;
   }
   #createAccount-button {
     width: 25%;
@@ -166,6 +167,7 @@
     margin-top: 10px;
     border: 2px solid black;
     background-color: lightgray;
+    color: black;
   }
 /* LoginPage.jsx */
 
