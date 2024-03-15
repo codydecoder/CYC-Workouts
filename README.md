@@ -18,6 +18,9 @@ https://www.figma.com/file/kqKBobOouoardl6W2EJ2wf/Group-Project?type=whiteboard&
   # Technology Used
   MERN STACK, MongoDb,Express,React,Cors, Vite.
 # Project ScreenShot
+![Screen Shot 2024-03-15 at 1 31 49 PM](https://github.com/codydecoder/CYC-Workouts/assets/148389997/dabb05e5-62bd-4892-b6f1-05c207e08f01)
+![Screen Shot 2024-03-15 at 1 31 25 PM](https://github.com/codydecoder/CYC-Workouts/assets/148389997/1b073c85-3f65-4e25-9975-b84217720fd5)
+![Screen Shot 2024-03-15 at 1 31 15 PM](https://github.com/codydecoder/CYC-Workouts/assets/148389997/08378505-701a-4d87-93f7-98746bb639b6)
 
 # Plan Board ScreenShot
 ![Screen Shot 2024-03-15 at 11 06 52 AM](https://github.com/whoever11/CYC-WorkoutsCJ/assets/148389997/4190b14f-9aa4-49ee-be52-f1f16c92849c)
