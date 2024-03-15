@@ -33,6 +33,15 @@ export default function WorkoutPlanList() {
         navigate(`${key}`)
     }
 
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`${BASE_URL}/workoutplans/${id}`)
+            setWorkoutPlans(workoutPlans.filter(workoutPlan => workoutPlan._id !== id))
+        } catch (error) {
+            console.error('Error deleting exercise:', error)
+        }
+    }
+
     if(!workoutPlans) {
         return <h1>LOADING...</h1>
 
@@ -52,6 +61,8 @@ export default function WorkoutPlanList() {
                             </ul>
                         </h4>
                         <h4 className="workoutPlan-description">Description: <span className='workoutPlan-description-details'>{workoutPlan.description}</span></h4>
+                        <button className='workoutPlan-delete-button' onClick={() => handleDelete(workoutPlan._id)}>Delete</button>
+
                     </div>
                 ))
             }

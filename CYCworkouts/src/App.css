@@ -47,6 +47,7 @@
   }
   .header-links:hover {
     color: darkblue;
+    text-shadow: 0 0 15px lightblue;
   }
 
 /* Header.jsx */
