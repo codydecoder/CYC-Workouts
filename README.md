@@ -17,4 +17,9 @@ https://www.figma.com/file/kqKBobOouoardl6W2EJ2wf/Group-Project?type=whiteboard&
   We made our tasks for the day on the figJam board and did the tasks we assigned ourselves to get the project done.
   # Technology Used
   MERN STACK, MongoDb,Express,React,Cors, Vite.
-  
+# Project ScreenShot
+
+# Plan Board ScreenShot
+
+# Challenges and Struggles 
+  we had some technical issues along the way of this project. git was small issue that the start but that was fixed in no time. The planning was good and execution for the most part was great just some things we could have done with organizing what we might have wanted to work on first.
