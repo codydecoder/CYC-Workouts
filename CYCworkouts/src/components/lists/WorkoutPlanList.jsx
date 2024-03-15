@@ -4,30 +4,30 @@ import { useNavigate } from "react-router-dom"
 import { BASE_URL } from '../../global'
 
 export default function WorkoutPlanList() {
-    const [workoutPlans, setWorkoutPlans] = useState([]);
-    const [exercises, setExercises] = useState({});
+    const [workoutPlans, setWorkoutPlans] = useState([])
+    const [exercises, setExercises] = useState({})
     
     useEffect(() => {
       const fetchWorkoutPlans = async () => {
         try {
-          const response = await axios.get(`${BASE_URL}/workoutPlans`);
-          setWorkoutPlans(response.data);
+          const response = await axios.get(`${BASE_URL}/workoutPlans`)
+          setWorkoutPlans(response.data)
 
-          const exerciseResponse = await axios.get(`${BASE_URL}/exercises`);
+          const exerciseResponse = await axios.get(`${BASE_URL}/exercises`)
           const exerciseData = exerciseResponse.data.reduce((acc, exercise) => {
-            acc[exercise._id] = exercise.exerciseName;
-            return acc;
-          }, {});
-          setExercises(exerciseData);
+            acc[exercise._id] = exercise.exerciseName
+            return acc
+          }, {})
+          setExercises(exerciseData)
         } catch (error) {
-          console.error("Failed to fetch workout plans or exercises:", error);
+          console.error("Failed to fetch workout plans or exercises:", error)
         }
-      };
+      }
       
-      fetchWorkoutPlans();
-    }, []);
+      fetchWorkoutPlans()
+    }, [])
     
-    let navigate = useNavigate();
+    let navigate = useNavigate()
 
     const showWorkoutPlan = (key) => {
         navigate(`${key}`)
@@ -52,13 +52,13 @@ export default function WorkoutPlanList() {
             {
                 workoutPlans.map((workoutPlan, key) => (
                     <div className="workoutPlan-card" key={workoutPlan._id}>
-                        <h3 className="workoutPlan-name">Name: <span className='workoutPlan-name-details'>{workoutPlan.workoutPlanName}</span></h3>
+                        <h3 className="workoutPlan-name">Workout Name: <span className='workoutPlan-name-details'>{workoutPlan.workoutPlanName}</span></h3>
                         <h4 className="workoutPlan-exerciseList">Exercises:  
-                            <ul>
+                            <div className="workoutPlan-exercises">
                                 {workoutPlan.exerciseList.map((exerciseId, id) => (
                                     <li key={id}>{exercises[exerciseId]}</li>
                                 ))}
-                            </ul>
+                            </div>
                         </h4>
                         <h4 className="workoutPlan-description">Description: <span className='workoutPlan-description-details'>{workoutPlan.description}</span></h4>
                         <button className='workoutPlan-delete-button' onClick={() => handleDelete(workoutPlan._id)}>Delete</button>

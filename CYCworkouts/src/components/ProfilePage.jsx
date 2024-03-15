@@ -7,29 +7,6 @@ const ProfilePage = ({ userData }) => {
   const [workoutPlans, setWorkoutPlans] = useState([])
   const [exercises, setExercises] = useState([])
 
-  /*useEffect(() => {
-    const fetchWorkoutPlans = async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/users/${userData._id}/workoutPlans`)
-        setWorkoutPlans(response.data)
-      } catch (error) {
-        console.error('Error fetching workout plans:', error.message)
-      }
-    }
-
-    const fetchExercises = async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/users/${userData._id}/exercises`)
-        setExercises(response.data)
-      } catch (error) {
-        console.error('Error fetching exercises:', error.message)
-      }
-    }
-
-    fetchWorkoutPlans()
-    fetchExercises()
-  }, [userData._id])*/
-
   useEffect(() => {
     setWorkoutPlans(userData.savedWorkoutPlans)
     setExercises(userData.savedExercises)

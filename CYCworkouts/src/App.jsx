@@ -19,9 +19,10 @@ const App = () => {
   const handleLogin = async (username) => {
     try {
       const response = await axios.get(`${BASE_URL}/users/${username}`)
-      console.log(response)
+      //console.log(response)
       const userData = response.data
       setUser(userData)
+      console.log(userData)
     } catch (error) {
       console.error('Error fetching user data:', error.message)
     }
