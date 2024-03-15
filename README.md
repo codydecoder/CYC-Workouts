@@ -20,6 +20,7 @@ https://www.figma.com/file/kqKBobOouoardl6W2EJ2wf/Group-Project?type=whiteboard&
 # Project ScreenShot
 
 # Plan Board ScreenShot
+![Screen Shot 2024-03-15 at 11 06 52 AM](https://github.com/whoever11/CYC-WorkoutsCJ/assets/148389997/4190b14f-9aa4-49ee-be52-f1f16c92849c)
 
 # Challenges and Struggles 
   we had some technical issues along the way of this project. git was small issue that the start but that was fixed in no time. The planning was good and execution for the most part was great just some things we could have done with organizing what we might have wanted to work on first.
