@@ -22,7 +22,7 @@ const App = () => {
       //console.log(response)
       const userData = response.data
       setUser(userData)
-      console.log(userData)
+      //console.log(userData)
     } catch (error) {
       console.error('Error fetching user data:', error.message)
     }
@@ -39,7 +39,7 @@ const App = () => {
       <Header /> 
       <Routes>
       <Route path="/" element={isAuthenticated ? <Homepage user={user} onLogout={handleLogout} /> : <Navigate replace to="/login" />} />
-        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route path="/login" element={ isAuthenticated ? <Navigate replace to="/" /> : <LoginPage onLogin={handleLogin} />} />
         <Route path="/create-account" element={<CreateAccount onSubmit={() => {}} />} />
           <Route path="/profile" element={isAuthenticated ? <ProfilePage userData={user} /> : null} />
           <Route path="/create-exercise" element={isAuthenticated ? <ExerciseForm onExerciseSubmit={() => {}} /> : null} />
