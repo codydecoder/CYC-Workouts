@@ -18,22 +18,22 @@ const ProfilePage = ({ userData }) => {
   
   return (
     <div className="profile-container">
-      <h2>Profile</h2>
+      <h2 id='profile-title'>Profile</h2>
       <div className="profile-info">
-        <strong>Name:</strong>
-        <span> {userData.username} </span>
+        <strong id='profile-name'>Name:</strong>
+        <span id='profile-name-details'> {userData.username} </span>
       </div>
 
-      <div className="workout-plans">
+      <div className="profile-workoutPlans">
         <h3>Saved Workout Plans:</h3>
-        <ul>
+        <div id='profile-workoutPlans-list'>
           {workoutPlans.map(workoutPlan => (
             <li key={workoutPlan._id}>{workoutPlan.workoutPlanName}</li>
           ))}
-        </ul>
+        </div>
       </div>
 
-      <div className="exercises">
+      <div className="profile-exercises">
         <h3>Saved Exercises:</h3>
         <ul>
           {exercises.map(exercise => (

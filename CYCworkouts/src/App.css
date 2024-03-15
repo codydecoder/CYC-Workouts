@@ -171,13 +171,32 @@
 
 
 /* ProfilePage.jsx ||May have duplicates with ExerciseList.jsx|| */
-  .workoutPlan-list {} 
-  .workoutPlan-card {}
-  .workoutPlan-name {}
-  .workoutPlan-name-details {}
-  .workoutPlan-exerciseList {}
-  .workoutPlan-description {}
-  .workoutPlan-description-details {}
+  #profile-title {
+    font-size: 32px;
+    font-family: "Alfa Slab One", serif;
+    color: #4676BF;
+  }
+  .workoutPlan-list {
+
+  } 
+  .workoutPlan-card {
+
+  }
+  .workoutPlan-name {
+
+  }
+  .workoutPlan-name-details {
+
+  }
+  .workoutPlan-exerciseList {
+
+  }
+  .workoutPlan-description {
+
+  }
+  .workoutPlan-description-details {
+
+  }
 
 /* ProfilePage.jsx */
 
